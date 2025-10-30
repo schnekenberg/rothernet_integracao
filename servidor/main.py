@@ -296,6 +296,14 @@ from agente_virtual.v5_integracao.servico_ia import ServicoIA
 from servidor.getters.get_methods import is_interaction_over, get_order_id, get_user_id
 from agente_virtual.v5_integracao.memoria import MemoriaConversa
 
+async def keep_alive(websocket):
+    while True:
+        try:
+            await websocket.send_text("ping")
+            await asyncio.sleep(10)
+        except:
+            break
+
 
 app = FastAPI()
 
@@ -338,6 +346,7 @@ os.makedirs("audios/audio_responses", exist_ok=True)
 async def websocket_endpoint(websocket: WebSocket):
     db = SessionLocal()
     await websocket.accept()
+    asyncio.create_task(keep_alive(websocket)) # novo
     ia = ServicoIA.instance()
     client_id = None
 
