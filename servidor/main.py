@@ -328,7 +328,7 @@ os.makedirs("audios/audio_responses", exist_ok=True)
 @app.websocket("/ws/audio")
 async def websocket_endpoint(websocket: WebSocket):
     db = SessionLocal()
-    await websocket.accept() 
+    # await websocket.accept() 
     ia = ServicoIA.instance()
     client_id = "unknown_user"
     await manager.connect(websocket, client_id)
@@ -388,6 +388,7 @@ async def websocket_endpoint(websocket: WebSocket):
             # 8. Verifica se a conversa terminou
             if finished:
                 print(f"Conversation ended for {client_id}")
+                await websocket.close() # novo
                 break
         
 
