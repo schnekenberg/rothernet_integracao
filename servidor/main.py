@@ -295,6 +295,7 @@ from servidor.conversions.wav_to_txt import transcrever_audio
 from agente_virtual.v5_integracao.servico_ia import ServicoIA
 from servidor.getters.get_methods import is_interaction_over, get_order_id, get_user_id
 from agente_virtual.v5_integracao.memoria import MemoriaConversa
+import asyncio
 
 async def keep_alive(websocket):
     while True:
