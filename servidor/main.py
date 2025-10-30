@@ -430,9 +430,3 @@ async def websocket_endpoint(websocket: WebSocket):
     finally:
         manager.disconnect(client_id)
         db.close()
-
-
-    finally:
-        manager.disconnect(client_id)
-        db.close()
-
