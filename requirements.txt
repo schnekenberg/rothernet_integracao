@@ -36,6 +36,7 @@ unstructured
 unstructured-inference
 pdfminer.six
 pi_heif
+pdf2image
 
 fastapi==0.115.6
 uvicorn==0.32.0
