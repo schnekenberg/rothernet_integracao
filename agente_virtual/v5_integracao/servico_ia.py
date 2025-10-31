@@ -78,7 +78,7 @@ class ServicoIA:
         
         # faz a busca por similaridades na database
         resultados_busca = self.db.similarity_search_with_relevance_scores(texto_usuario, k = 3)
-        if len(resultados_busca) == 0 or resultados_busca[0][1] < 0.7: # não encontrou conteúdo relevante
+        if len(resultados_busca) == 0 or resultados_busca[0][1] < 0.5: # não encontrou conteúdo relevante
             resposta_fallback = "Desculpe, não consegui entender. Pode reformular?"
             memoria.adicionar(usuario = texto_usuario, agente = resposta_fallback)
             # return resposta_fallback
