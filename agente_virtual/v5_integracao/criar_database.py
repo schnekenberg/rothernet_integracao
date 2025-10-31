@@ -18,7 +18,7 @@ if not api_key:
 openai.api_key = api_key
 
 DOCUMENTOS_CAMINHO = os.path.join(os.path.dirname(__file__), "documentos") # DOCUMENTOS_CAMINHO = "documentos"
-CHROMA_CAMINHO = os.path.join(os.path.dirname(__file__), "chroma") # CHROMA_CAMINHO = "chroma"
+CHROMA_CAMINHO = "/app/chroma" # CHROMA_CAMINHO = os.path.join(os.path.dirname(__file__), "chroma")
 
 def main():
     gerar_data_store()
