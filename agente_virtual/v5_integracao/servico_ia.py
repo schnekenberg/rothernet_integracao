@@ -60,6 +60,9 @@ class ServicoIA:
         # carrega banco de dados, modelo da IA e template do prompt
         emb = OpenAIEmbeddings()
         self.db = Chroma(persist_directory = CHROMA_CAMINHO, embedding_function = emb)
+        print("Conteúdo de /app/chroma:", os.listdir(CHROMA_CAMINHO))
+        print("Tamanho da base:", len(self.db.get()['ids']))
+
         self.model = ChatOpenAI(model = "gpt-4o-mini")
         self.prompt_template = ChatPromptTemplate.from_template(TEMPLATE_PROMPT)
         print("IA inicializada!")
