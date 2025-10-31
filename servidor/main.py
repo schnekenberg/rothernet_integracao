@@ -88,6 +88,7 @@ async def websocket_endpoint(websocket: WebSocket):
             # 4. IA gera resposta
             memoria = manager.memories[client_id]
             ai_text = ia.responder(user_text, memoria)
+            memoria.adicionar(usuario=user_text, agente=ai_text) # novo: atualiza a memória!
             print(f"[{client_id}] AI responded: {ai_text}")
 
             # 5. Detecta ID de pedido se houver
