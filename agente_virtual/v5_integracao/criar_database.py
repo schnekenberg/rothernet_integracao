@@ -109,6 +109,7 @@ def salvar_no_chroma(chunks: list[Document]):
         persist_directory=CHROMA_CAMINHO,
         collection_name="limpinho"
     )
+    db.persist()
 
     print(f"Salvou {len(chunks)} chunks em {CHROMA_CAMINHO}.")
 
