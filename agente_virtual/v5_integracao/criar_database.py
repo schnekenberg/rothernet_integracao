@@ -1,4 +1,5 @@
-from langchain_community.document_loaders import DirectoryLoader, UnstructuredPDFLoader # utilizado para padronizar documentos como .pdf
+# from langchain_community.document_loaders import DirectoryLoader, UnstructuredPDFLoader # utilizado para padronizar documentos como .pdf
+from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader # novo
 from langchain.text_splitter import RecursiveCharacterTextSplitter # utilizado para separar os dados dos documentos (texto) em chunks
 from langchain.schema import Document # utilizado para criar Document a partir dos dados
 from langchain_openai import OpenAIEmbeddings
@@ -29,7 +30,8 @@ def gerar_data_store():
     salvar_no_chroma(chunks)
 
 def carregar_documentos():
-    loader = DirectoryLoader(DOCUMENTOS_CAMINHO, glob = "*.pdf", loader_cls = UnstructuredPDFLoader, loader_kwargs = {"language": "pt"})
+    # loader = DirectoryLoader(DOCUMENTOS_CAMINHO, glob = "*.pdf", loader_cls = UnstructuredPDFLoader, loader_kwargs = {"language": "pt"})
+    loader = DirectoryLoader(DOCUMENTOS_CAMINHO, glob="*.pdf", loader_cls=PyPDFLoader) # novo
     documentos = loader.load()
 
     documentos_finais = [] # vamos caçar os documentos para dividir os chunks de cada um de modo específico
