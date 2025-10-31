@@ -41,9 +41,7 @@ def carregar_documentos():
             documentos_finais.extend(carregar_cardapio(doc))
         elif "manual_regras" in nome_arquivo: # verifica se o documento é o manual de regras
             documentos_finais.extend(carregar_regras(doc))
-        # else:
-        #    documentos_finais.append(doc)
-
+    
     return documentos_finais
 
 def carregar_cardapio(doc: Document):
@@ -103,12 +101,13 @@ def salvar_no_chroma(chunks: list[Document]):
         shutil.rmtree(CHROMA_CAMINHO)
 
     # criar uma DB a partir dos documentos
-    _ = Chroma.from_documents(
+    db = Chroma.from_documents(
         chunks,
         OpenAIEmbeddings(),
         persist_directory=CHROMA_CAMINHO,
         collection_name="limpinho"
     )
+    db.persist()
 
     print(f"Salvou {len(chunks)} chunks em {CHROMA_CAMINHO}.")
 
