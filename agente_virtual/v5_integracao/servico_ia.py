@@ -59,7 +59,12 @@ class ServicoIA:
     def __init__(self):
         # carrega banco de dados, modelo da IA e template do prompt
         emb = OpenAIEmbeddings()
-        self.db = Chroma(persist_directory = CHROMA_CAMINHO, embedding_function = emb)
+        self.db = Chroma(
+            persist_directory=CHROMA_CAMINHO,
+            embedding_function=emb,
+            collection_name="limpinho"
+        )
+
         print("Conteúdo de /app/chroma:", os.listdir(CHROMA_CAMINHO))
         print("Tamanho da base:", len(self.db.get()['ids']))
 
