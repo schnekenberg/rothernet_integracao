@@ -104,7 +104,10 @@ def salvar_no_chroma(chunks: list[Document]):
 
     # criar uma DB a partir dos documentos
     _ = Chroma.from_documents(
-        chunks, OpenAIEmbeddings(), persist_directory = CHROMA_CAMINHO
+        chunks,
+        OpenAIEmbeddings(),
+        persist_directory=CHROMA_CAMINHO,
+        collection_name="limpinho"
     )
 
     print(f"Salvou {len(chunks)} chunks em {CHROMA_CAMINHO}.")
