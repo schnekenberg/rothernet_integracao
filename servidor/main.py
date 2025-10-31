@@ -68,10 +68,14 @@ async def websocket_endpoint(websocket: WebSocket):
              # Verifica se o user ID foi mencionado agora
             detected_id = get_user_id(user_text)
             if detected_id and client_id == "unknown_user":
-                # print(f"[{client_id}] User said: {user_text}") #teste
-                manager.disconnect(client_id)
+                old_id = client_id
                 client_id = detected_id
-                await manager.connect(websocket, client_id)
+                
+                # manager.disconnect(client_id)
+                manager.connections[client_id] = manager.connections.pop(old_id)
+                manager.memories[client_id] = manager.memories.pop(old_id)
+                
+                # await manager.connect(websocket, client_id)
                 new_path = f"audios/received_audio/{client_id}.wav"
                 os.rename(tmp_file_path, new_path)
 
