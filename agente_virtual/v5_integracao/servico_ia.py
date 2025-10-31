@@ -14,7 +14,7 @@ if not api_key:
     raise ValueError("OPENAI_API_KEY não encontrada nas variáveis de ambiente")
 
 
-CHROMA_CAMINHO = "chroma"
+CHROMA_CAMINHO = "/app/chroma"
 
 TEMPLATE_PROMPT = """
 Você é um atendente virtual do restaurante Limpinho.
