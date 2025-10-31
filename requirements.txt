@@ -33,6 +33,7 @@ chromadb==0.5.17
 openai==1.61.1
 tiktoken==0.7.0
 unstructured
+unstructured-inference
 pdfminer.six
 pi_heif
 
