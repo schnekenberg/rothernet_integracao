@@ -32,6 +32,7 @@ langchain-community==0.3.7
 chromadb==0.5.17
 openai==1.61.1
 tiktoken==0.7.0
+unstructured
 
 fastapi==0.115.6
 uvicorn==0.32.0
